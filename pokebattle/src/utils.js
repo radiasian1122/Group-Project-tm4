@@ -30,3 +30,11 @@ export function getRandomPokemon(pokemonArray){
     
     return pokemonArray[Math.floor(Math.random()*pokemonArray.length)-1]
 }
+
+export function getPokemonName(pokemon){
+    return pokemon?.name ||"No Name Found"
+}
+
+export function getPokemonImage(pokemon){
+    return pokemon?.sprites.front_default || `./assets/react.svg`
+}
