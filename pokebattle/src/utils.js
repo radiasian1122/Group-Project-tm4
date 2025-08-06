@@ -22,9 +22,17 @@ export async function getPokeArray(maxId,minId=0){
     return await pokeArray
 }
 
-export function simulateBattle(pokeArray){
+export function simulateBattle(matchupArray){
+    let scoreArray = []
+    for (let fighterIndex in matchupArray){
+        let fighterScore = getPokemonStats(matchupArray[fighterIndex])
+        .reduce((item,accumulator=>item+accumulator))
+        scoreArray[fighterIndex] = fighterScore
+    }
+
+    let winningIndex = scoreArray.indexOf(Math.max(...scoreArray))
     //returns index of winning pokemon
-    return 0
+    return winningIndex
 }
 
 export function getRandomPokemon(pokemonArray){
@@ -55,4 +63,8 @@ export function toTitleCase(str) {
     /\w\S*/g,
     text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
   );
+}
+
+export function getPokemonStats(pokemon){
+    return pokemon['stats']
 }
