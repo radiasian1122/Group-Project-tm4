@@ -48,14 +48,17 @@ export function getPokemonImage(pokemon) {
     return pokemon?.sprites.front_default || `./assets/react.svg`
 }
 
-export function getMatchup(pokemonArray) {
-    let poke1, poke2
-    poke1 = getRandomPokemon(pokemonArray)
-    poke2 = getRandomPokemon(pokemonArray)
+export function getMatchup(pokemonArray,size=2) {
+    let matchupArray=[]
+for (let x=0;x<size;x++){
+    matchupArray[x] = getRandomPokemon(pokemonArray)
+}
+    /*
     while (poke1.id === poke2.id) {
         poke2 = getRandomPokemon(pokemonArray)
     }
-    return [poke1, poke2]
+        */
+    return matchupArray
 }
 
 export function toTitleCase(str) {
