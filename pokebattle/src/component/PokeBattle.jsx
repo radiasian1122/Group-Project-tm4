@@ -36,7 +36,7 @@ export function PokeBattle({ onPlayAgain }) {
         }
     }, [pokeArray]);
 
-    console.log(winState)
+    console.log(matchup.map(item=>item['name']))
     if (pokeArray.length === 0) {
         return (<div>Loading...</div>)
     } else {
