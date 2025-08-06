@@ -22,8 +22,9 @@ export async function getPokeArray(maxId,minId=0){
     return await pokeArray
 }
 
-export function simulateBattle(poke1, poke2){
-    return poke1
+export function simulateBattle(pokeArray){
+    //returns index of winning pokemon
+    return 0
 }
 
 export function getRandomPokemon(pokemonArray){
@@ -37,4 +38,21 @@ export function getPokemonName(pokemon){
 
 export function getPokemonImage(pokemon){
     return pokemon?.sprites.front_default || `./assets/react.svg`
+}
+
+export function getMatchup(pokemonArray){
+    let poke1, poke2
+    poke1 = getRandomPokemon(pokemonArray)
+    poke2 = getRandomPokemon(pokemonArray)
+    while (poke1.id===poke2.id){
+        poke2 = getRandomPokemon(pokemonArray)
+    }
+    return [poke1, poke2]
+}
+
+export function toTitleCase(str) {
+  return str.replace(
+    /\w\S*/g,
+    text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+  );
 }

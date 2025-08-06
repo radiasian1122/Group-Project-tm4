@@ -1,34 +1,70 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getMatchup, getPokeArray, getRandomPokemon, simulateBattle } from '../utils';
+import PokeCard from './PokeCard';
 
 export function PokeBattle({ onPlayAgain }) {
- return (
-    <div className="pokebattle-container">
-        <h1 className="title"> PokeBattle</h1>
+    const [pokeArray, setPokeArray] = useState([])
+    const [matchup, setMatchup] = useState([])
+    const [winState, setWinState] = useState([null,null])
 
-    <div className="battle-selection">
-        {/* Top Pokemon */}
-        <div className="pokemon-row">
-            <div className="result-icon" />
-            <div className="pokemon-image"> Pokemon Picture</div>
-        </div>
 
-        {/* VS text */}
+    //what do we need?
+    //User clicks a pokemon
+    //Battle is simulated
+    //Winner is chosen
+    //PokeCard updates with something according to if they won/lost
 
-    <div className="vs-lable">
-        <p>Checkmark if Right</p>
-        <p>X if Wrong</p>
-        <h2>VS</h2>
-    </div>
+    function pokemonSelected(index){
+        if (winState[0]!==null){return}
+        let winArray = winState.slice()
+        //winArray[simulateBattle(matchup)]='WIN'
+        winArray.fill('Loser')
+        winArray[index]='WIN'
+        //simulateBattle
+        //Do stuff
+        setWinState(winArray)
+    }
 
-    {/* Bottom Pokemon */}
-    <div className="pokemon-row">
-        <div className="result-icon" />
-        <div className="pokemon-image"> Pokemon Picture</div>
-    </div>
-  </div>
+    useEffect(() => {
+        getPokeArray(151).then(data => setPokeArray(data))
+    }, []);
 
-  <button className="play-again-buton" onClick={onPlayAgain}>Play Again</button>
-    </div>
-    );
-  }
+    useEffect(() => {
+        if (pokeArray.length > 0) {
+            setMatchup(getMatchup(pokeArray))
+        }
+    }, [pokeArray]);
+
+    console.log(winState)
+    if (pokeArray.length === 0) {
+        return (<div>Loading...</div>)
+    } else {
+        return (
+            <div className="pokebattle-container">
+                <h1 className="title"> PokeBattle</h1>
+
+                <div className="battle-selection">
+                    {/* Top Pokemon */}
+                    <PokeCard pokemon={matchup[0]} winStatus={winState[0]} clickedPokemon={()=>pokemonSelected(0)} />
+
+                    {/* VS text */}
+
+                    <div className="vs-lable">
+                        <p>Checkmark if Right</p>
+                        <p>X if Wrong</p>
+                        <h2>VS</h2>
+                    </div>
+
+                    {/* Bottom Pokemon */}
+                    <PokeCard pokemon={matchup[1]} winStatus={winState[1]} clickedPokemon={()=>pokemonSelected(1)}/>
+                </div>
+
+                <button className="play-again-buton" onClick={()=>{setMatchup(getMatchup(pokeArray));setWinState([null,null])}}>Play Again</button>
+            </div>
+        );
+    }
+
+
+
+}
 

@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
 import Game from "./Game";
+import { getPokemonImage, getPokemonName, toTitleCase } from "../utils";
 
-export default function PokeCard({ pokeId, stats, pokeSelected, onClick }) {
-  const [pokeData, setPokeData] = useState(null);
+export default function PokeCard({pokemon,winStatus=null,clickedPokemon}) {
 
-  useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokeId}`)
-      .then((res) => res.json())
-      .then((data) => setPokeData(data));
-  }, [pokeId]);
+  if (!pokemon) return <div>Loading...</div>;
 
-  if (!pokeData) return <div>Loading...</div>;
-
+  let winMark;
+  if (winStatus){
+    winMark=(<div>{winStatus}</div>)
+  }
+console.log(`winstatus`,winStatus,winMark)
   return (
-    <div className="pokemon" onClick={onClick}>
-      <h3>{pokeData.name.toUpperCase()}</h3>
-      <img alt={pokeData.name} src={pokeData.sprites.front_default} />
+    <div className="pokemon" onClick={clickedPokemon}>
+      <h3>{toTitleCase(getPokemonName(pokemon))}</h3>
+      <img alt={getPokemonName(pokemon)} src={getPokemonImage(pokemon)} />
+      {winMark}
     </div>
   );
 }
