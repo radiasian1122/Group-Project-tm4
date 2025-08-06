@@ -37,7 +37,7 @@ export function simulateBattle(matchupArray) {
 
 export function getRandomPokemon(pokemonArray) {
 
-    return pokemonArray[Math.round(Math.random() * (pokemonArray.length-1))]
+    return pokemonArray[Math.floor(Math.random() * pokemonArray.length)]
 }
 
 export function getPokemonName(pokemon) {
