@@ -3,38 +3,26 @@ import "./App.css";
 
 function App() {
 return (<div><PokeBattle/></div>)
-} 
+}
+// import { useState } from 'react'
+// import {Routes, Route, Link} from "react-router-dom";
+// import './App.css'
+// import Home from './Home'
+// import Game from './Game'
 
-// function PokeBattle({ onPlayAgain }) {
-//  return (
-//     <div className="pokebattle-container">
-//         <h1 className="title"> PokeBattle</h1>
+// function App() {
+//   const [details, setDetails] = useState({})
 
-//     <div className="battle-selection">
-//         {/* Top Pokemon */}
-//         <div className="pokemon-row">
-//             <div className="result-icon" />
-//             <div className="pokemon-image"> Pokemon Picture</div>
-//         </div>
-
-//         {/* VS text */}
-
-//     <div className="vs-lable">
-//         <p>Checkmark if Right</p>
-//         <p>X if Wrong</p>
-//         <h2>VS</h2>
+//   return (
+//     <div>
+//       <Routes>
+//         <Route path='/' element={<Home />} />
+//         <Route path='/play' element={<Game />} />
+//       </Routes>
 //     </div>
+//   )
+// }
 
-//     {/* Bottom Pokemon */}
-//     <div className="pokemon-row">
-//         <div className="result-icon" />
-//         <div className="pokemon-image"> Pokemon Picture</div>
-//     </div>
-//   </div>
-
-//   <button className="play-again-buton" onClick={onPlayAgain}>Play Again</button>
-//     </div>
-//     );
-//   }
+// export default App
 
 export default App
