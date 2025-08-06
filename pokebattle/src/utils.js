@@ -6,12 +6,27 @@ export async function apiCaller(url) {
 }
 
 export async function getPokeArray(maxId,minId=0){
-    //Takes a minimum and optional maximum Id to pull from, and returns promise>Array of pokemon objects
-    let pokeArray = await apiCaller(`https://pokeapi.co/api/v2/pokemon?offset=%${minId}&limit=${maxId}/`)
-    console.log(await pokeArray)
+    //Takes a maximum and optional minimum Id to pull from, and returns promise>Array of pokemon objects
+    if (minId>0){
+        minId-=1
+        maxId-=minId
+    }
+
+    let rawArray = await apiCaller(`https://pokeapi.co/api/v2/pokemon?offset=${minId}&limit=${maxId}/`)
+    let pokeUrlArray = await rawArray.results
+    let pokeArray = await Promise.all(
+        pokeUrlArray.map(async(item, key)=>{
+        return apiCaller(item['url'])
+    })
+    )
     return await pokeArray
 }
 
 export function simulateBattle(poke1, poke2){
     return poke1
+}
+
+export function getRandomPokemon(pokemonArray){
+    
+    return pokemonArray[Math.floor(Math.random()*pokemonArray.length)-1]
 }
