@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getMatchup, getPokeArray, getRandomPokemon, simulateBattle } from '../utils';
+import { getMatchup, getPokeArray, getRandomPokemon, simulateBattle, sumPokeStats } from '../utils';
 import PokeCard from './PokeCard';
 
 export function PokeBattle({ onPlayAgain }) {
@@ -17,9 +17,10 @@ export function PokeBattle({ onPlayAgain }) {
     function pokemonSelected(index){
         if (winState[0]!==null){return}
         let winArray = winState.slice()
-        //winArray[simulateBattle(matchup)]='WIN'
-        winArray.fill('Loser')
-        winArray[index]='WIN'
+        
+        winArray.fill('LOSE')
+        let winnerIndex = simulateBattle(matchup)
+        winArray[winnerIndex]=`WIN`
         //simulateBattle
         //Do stuff
         setWinState(winArray)

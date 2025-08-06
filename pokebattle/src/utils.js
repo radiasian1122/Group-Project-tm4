@@ -5,28 +5,28 @@ export async function apiCaller(url) {
     return await data
 }
 
-export async function getPokeArray(maxId,minId=0){
+export async function getPokeArray(maxId, minId = 0) {
     //Takes a maximum and optional minimum Id to pull from, and returns promise>Array of pokemon objects
-    if (minId>0){
-        minId-=1
-        maxId-=minId
+    if (minId > 0) {
+        minId -= 1
+        maxId -= minId
     }
 
     let rawArray = await apiCaller(`https://pokeapi.co/api/v2/pokemon?offset=${minId}&limit=${maxId}/`)
     let pokeUrlArray = await rawArray.results
     let pokeArray = await Promise.all(
-        pokeUrlArray.map(async(item, key)=>{
-        return apiCaller(item['url'])
-    })
+        pokeUrlArray.map(async (item, key) => {
+            return apiCaller(item['url'])
+        })
     )
     return await pokeArray
 }
 
-export function simulateBattle(matchupArray){
+export function simulateBattle(matchupArray) {
     let scoreArray = []
-    for (let fighterIndex in matchupArray){
-        let fighterScore = getPokemonStats(matchupArray[fighterIndex])
-        .reduce((item,accumulator=>item+accumulator))
+
+    for (let fighterIndex in matchupArray) {
+        let fighterScore = sumPokeStats(matchupArray[fighterIndex])
         scoreArray[fighterIndex] = fighterScore
     }
 
@@ -35,36 +35,42 @@ export function simulateBattle(matchupArray){
     return winningIndex
 }
 
-export function getRandomPokemon(pokemonArray){
-    
-    return pokemonArray[Math.floor(Math.random()*pokemonArray.length)-1]
+export function getRandomPokemon(pokemonArray) {
+
+    return pokemonArray[Math.floor(Math.random() * pokemonArray.length) - 1]
 }
 
-export function getPokemonName(pokemon){
-    return pokemon?.name ||"No Name Found"
+export function getPokemonName(pokemon) {
+    return pokemon?.name || "No Name Found"
 }
 
-export function getPokemonImage(pokemon){
+export function getPokemonImage(pokemon) {
     return pokemon?.sprites.front_default || `./assets/react.svg`
 }
 
-export function getMatchup(pokemonArray){
+export function getMatchup(pokemonArray) {
     let poke1, poke2
     poke1 = getRandomPokemon(pokemonArray)
     poke2 = getRandomPokemon(pokemonArray)
-    while (poke1.id===poke2.id){
+    while (poke1.id === poke2.id) {
         poke2 = getRandomPokemon(pokemonArray)
     }
     return [poke1, poke2]
 }
 
 export function toTitleCase(str) {
-  return str.replace(
-    /\w\S*/g,
-    text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
-  );
+    return str.replace(
+        /\w\S*/g,
+        text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+    );
 }
 
-export function getPokemonStats(pokemon){
+export function getPokemonStats(pokemon) {
     return pokemon['stats']
+}
+
+export function sumPokeStats(pokemon) {
+    let pokeStatsArray = getPokemonStats(pokemon).map(item => item['base_stat'])
+    let fighterScore = pokeStatsArray.reduce((item, accumulator) => item + accumulator)
+    return fighterScore
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Game from "./Game";
-import { getPokemonImage, getPokemonName, toTitleCase } from "../utils";
+import { getPokemonImage, getPokemonName, toTitleCase, sumPokeStats } from "../utils";
 
 export default function PokeCard({pokemon,winStatus=null,clickedPokemon}) {
 
@@ -8,7 +8,7 @@ export default function PokeCard({pokemon,winStatus=null,clickedPokemon}) {
 
   let winMark;
   if (winStatus){
-    winMark=(<div>{winStatus}</div>)
+    winMark=(<div>{`${winStatus} ${sumPokeStats(pokemon)}`}</div>)
   }
 console.log(`winstatus`,winStatus,winMark)
   return (
