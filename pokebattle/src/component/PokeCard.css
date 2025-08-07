@@ -2,6 +2,7 @@
     width: fit-content;
     display: flex;
     flex-direction: row;
+    align-content: center;
 }
 
 .pokeMainArea{
@@ -22,4 +23,11 @@
 }
 
 .pokeStatsArea{
+    width: 200px; 
+    position: absolute;
+    left: 60%;
+    transform: (-50%,0);
+}
+.statsRow{
+    margin: 0px;
 }
