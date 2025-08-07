@@ -1,16 +1,31 @@
-@property --type-base-color {
+@property --type-first-color {
   syntax: "<color>";
   inherits: false;
-  initial-value: #1a2a80;
+  initial-value: #0c0c0c;
 }
 
-@property --type-accent-color {
+@property --type-second-color {
   syntax: "<color>";
   inherits: false;
-  initial-value: rgb(178, 176, 232);
+  initial-value: #481e14;
+}
+
+@property --type-third-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #9b3922;
+}
+
+@property --type-fourth-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #f2613f;
 }
 
 .pokebattle-container {
   background-color: var(--type-base-color);
   color: var(--type-accent-color);
+}
+
+.pokebattle-container {
 }

@@ -52,8 +52,6 @@ export function PokeBattle({ onPlayAgain }) {
   } else {
     return (
       <div className="pokebattle-container">
-        <h1 className="title"> PokeBattle</h1>
-
         <div className="battle-selection">
           {/* Top Pokemon */}
           <PokeCard
