@@ -18,7 +18,7 @@ export default function PokeCard({ pokemon, winStatus = null, clickedPokemon }) 
       <div className="pokeMainArea">
         <header className="pokeCardHeader">
           <h3>{toTitleCase(getPokemonName(pokemon))}</h3>
-          <h3 className="pokeCardStatSum">{sumPokeStats(pokemon)}</h3>
+          {/* <h3 className="pokeCardStatSum">{sumPokeStats(pokemon)}</h3> */}
         </header>
 
         <img className="pokeCardImage" alt={getPokemonName(pokemon)} src={getPokemonImage(pokemon)} />

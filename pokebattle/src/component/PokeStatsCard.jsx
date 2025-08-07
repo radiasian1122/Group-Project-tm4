@@ -15,11 +15,14 @@ export function PokeStatsCard({ pokemon, winStatus }) {
         return (
             <p key={key} className="statsRow" rank={rankIndex.indexOf(item['name'])}>{toTitleCase(item['name'])}: {item['value']}</p>
         )})
-
-    return (
-        <div className="pokeStatsCard">
+        return (
+            <div
+            className={`pokeStatsCard ${
+                winStatus === "WIN" ? "WIN" : winStatus === "LOSE" ? "LOSE" : ""
+            }`}
+            >
             <h3>{`${winStatus} ${sumPokeStats(pokemon)}`}</h3>
             {myStatsCard}
-        </div>
-    )
-}
+            </div>
+        );
+    }

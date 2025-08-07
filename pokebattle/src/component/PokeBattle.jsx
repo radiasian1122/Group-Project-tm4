@@ -75,7 +75,7 @@ export function PokeBattle({ onPlayAgain }) {
         </div>
 
         <button
-          className="play-again-buton"
+          className="play-again-button"
           onClick={() => {
             setMatchup(getMatchup(pokeArray));
             setWinState([null, null]);
