@@ -1,8 +1,16 @@
-import {PokeBattle} from "./component/PokeBattle.jsx"
+import { PokeBattle } from "./component/PokeBattle.jsx";
 import "./App.css";
 
 function App() {
-return (<div><PokeBattle/></div>)
+  return (
+    <div id="appArea">
+      <header></header>
+      <main>
+        <PokeBattle />
+      </main>
+      <footer></footer>
+    </div>
+  );
 }
 // import { useState } from 'react'
 // import {Routes, Route, Link} from "react-router-dom";
@@ -25,4 +33,4 @@ return (<div><PokeBattle/></div>)
 
 // export default App
 
-export default App
+export default App;
