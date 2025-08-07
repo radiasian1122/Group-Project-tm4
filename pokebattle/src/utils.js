@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export async function apiCaller(url) {
     //Takes a url, and returns a promise>response JSON body
     const res = await fetch(url);
@@ -48,11 +50,11 @@ export function getPokemonImage(pokemon) {
     return pokemon?.sprites.front_default || `./assets/react.svg`
 }
 
-export function getMatchup(pokemonArray,size=2) {
-    let matchupArray=[]
-for (let x=0;x<size;x++){
-    matchupArray[x] = getRandomPokemon(pokemonArray)
-}
+export function getMatchup(pokemonArray, size = 2) {
+    let matchupArray = []
+    for (let x = 0; x < size; x++) {
+        matchupArray[x] = getRandomPokemon(pokemonArray)
+    }
     /*
     while (poke1.id === poke2.id) {
         poke2 = getRandomPokemon(pokemonArray)
@@ -76,4 +78,12 @@ export function sumPokeStats(pokemon) {
     let pokeStatsArray = getPokemonStats(pokemon).map(item => item['base_stat'])
     let fighterScore = pokeStatsArray.reduce((item, accumulator) => item + accumulator)
     return fighterScore
+}
+
+export function stateMonitor(stateValue, stateName = 'State') {
+    return (
+        useEffect(() => {
+            console.log(`${stateName} changed, new value is`, stateValue)
+        }, [stateValue])
+    )
 }

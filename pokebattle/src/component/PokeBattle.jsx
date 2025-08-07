@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getMatchup, getPokeArray, getRandomPokemon, simulateBattle, sumPokeStats } from '../utils';
+import { getMatchup, getPokeArray, getRandomPokemon, simulateBattle, stateMonitor, sumPokeStats } from '../utils';
 import PokeCard from './PokeCard';
 
 export function PokeBattle({ onPlayAgain }) {
@@ -35,6 +35,8 @@ export function PokeBattle({ onPlayAgain }) {
             setMatchup(getMatchup(pokeArray))
         }
     }, [pokeArray]);
+
+    stateMonitor(matchup,'matchup')
 
     console.log(matchup.map(item=>item['name']))
     if (pokeArray.length === 0) {
