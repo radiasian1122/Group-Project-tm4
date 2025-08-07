@@ -1,4 +1,4 @@
-@property --type-first-color {
+/* @property --type-first-color {
   syntax: "<color>";
   inherits: false;
   initial-value: #0c0c0c;
@@ -20,12 +20,17 @@
   syntax: "<color>";
   inherits: false;
   initial-value: #f2613f;
-}
+} */
 
-.pokebattle-container {
+/* .pokebattle-container {
   background-color: var(--type-base-color);
   color: var(--type-accent-color);
-}
+} */
 
-.pokebattle-container {
+.header {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: auto;
 }

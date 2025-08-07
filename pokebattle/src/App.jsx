@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <header>
-        <h1>Pokebattle</h1>
+        <img className="header" src="src/images/Pokebattles.png" alt="logo" />
       </header>
       <div id="appArea">
         <Router>
