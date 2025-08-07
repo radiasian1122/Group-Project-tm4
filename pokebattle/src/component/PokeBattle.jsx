@@ -61,10 +61,6 @@ export function PokeBattle({ onPlayAgain }) {
           />
 
           {/* VS text */}
-
-                    <div className="vs-lable">
-                        <h2>VS</h2>
-                    </div>
           <div className="vs-lable">
             <h2>VS</h2>
           </div>

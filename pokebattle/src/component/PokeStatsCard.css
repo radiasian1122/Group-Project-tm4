@@ -1,0 +1,22 @@
+[rank="0"]{
+    color: rgb(0, 255, 42);
+}
+[rank="1"]{
+    color: rgb(228, 205, 0);
+}
+[rank="2"]{
+    color: rgb(20, 134, 201);
+}
+[rank="3"]{
+    color: rgb(238, 255, 0);
+}
+[rank="4"]{
+    color: rgb(255, 115, 0);
+}
+[rank="5"]{
+    color: rgb(255, 17, 0);
+}
+
+.pokeStatsCard{
+    border: 1px,solid,black;
+}
