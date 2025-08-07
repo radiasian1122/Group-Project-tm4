@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import Game from "./Game";
+import { PokeStatsCard } from "./PokeStatsCard";
 import { getPokemonImage, getPokemonName, toTitleCase, sumPokeStats } from "../utils";
 
 export default function PokeCard({pokemon,winStatus=null,clickedPokemon}) {
@@ -8,7 +7,9 @@ export default function PokeCard({pokemon,winStatus=null,clickedPokemon}) {
 
   let winMark;
   if (winStatus){
-    winMark=(<div>{`${winStatus} ${sumPokeStats(pokemon)}`}</div>)
+    winMark=(<div>
+    <PokeStatsCard pokemon={pokemon} winStatus={winStatus}/>
+    </div>)
   }
 console.log(`winstatus`,winStatus,winMark)
   return (
@@ -16,6 +17,8 @@ console.log(`winstatus`,winStatus,winMark)
       <h3>{toTitleCase(getPokemonName(pokemon))}</h3>
       <img alt={getPokemonName(pokemon)} src={getPokemonImage(pokemon)} />
       {winMark}
+      
+
     </div>
   );
 }

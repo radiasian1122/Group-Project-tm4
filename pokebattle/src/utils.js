@@ -87,3 +87,25 @@ export function stateMonitor(stateValue, stateName = 'State') {
         }, [stateValue])
     )
 }
+
+export function getPokemonStatValue(pokemon,stat){
+    return getPokemonStats(pokemon).find((item)=>item['stat']['name']===stat)['base_stat']
+}
+
+export function pokeStatTypes(){
+    return ['hp','attack','defense','special-attack',
+        'special-defense','speed']
+}
+
+export function rankStats(statsArray){
+    let indexedArray = statsArray.map((item,index)=>({value: item['value'], name: item['name']}))
+
+     indexedArray.sort((a, b) => b.value - a.value);
+     const nameOrder = indexedArray.map(item => item.name);
+
+     //return {speed:value:ranking}
+
+    //return array of rankings
+    //[6,4,3,2,5,1]
+    return nameOrder;
+}
