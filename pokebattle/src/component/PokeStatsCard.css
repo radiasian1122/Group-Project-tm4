@@ -21,6 +21,21 @@
 
 .pokeStatsCard{
     border: 1px,solid,black;
+    border-radius: 10px;
+    padding: 1em 2em;
+
+}
+
+.pokeCardHeader{
+    font-size: 30px
+}
+
+.vs-lable{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+
 }
 
 .statsRow{
@@ -32,6 +47,12 @@
     background-color: #D4EDDA;
 }
 .LOSE{
-    background-color: #F8D7DA; 
+    background-color: #F8D7DA;
 
+}
+
+.pokeCardImage {
+    width: 200px;
+    height: auto;
+    image-rendering: pixelated;
 }
