@@ -8,6 +8,7 @@ import {
   sumPokeStats,
 } from "../utils";
 import PokeCard from "./PokeCard";
+import "./PokeBattle.css"
 
 export function PokeBattle({ onPlayAgain }) {
   const [pokeArray, setPokeArray] = useState([]);

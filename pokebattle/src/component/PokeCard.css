@@ -1,0 +1,25 @@
+.pokemonCard{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+.pokeMainArea{
+    display: flex;
+    flex-direction: column;
+}
+
+.pokeMainArea>*{
+    align-self: center;
+}
+
+.pokeCardHeader{
+    display: flex;
+}
+
+.pokeCardHeader>*{
+    margin: 5px;
+}
+
+.pokeStatsArea{
+}
