@@ -40,3 +40,18 @@ body {
 .home-container {
   color: white;
 }
+
+.vs-label {
+  img {
+    width: 100%; /* Image will take 100% of its parent's width */
+    height: auto; /* Height will adjust proportionally */
+    margin-top: -25px;
+    margin-bottom: 15px;
+  }
+
+  /* Alternatively, set height and let width adjust */
+  img {
+    height: 65px; /* Image will have a fixed height of 200px */
+    width: auto; /* Width will adjust proportionally */
+  }
+}

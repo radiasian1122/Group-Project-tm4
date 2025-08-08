@@ -8,12 +8,13 @@ import {
   sumPokeStats,
 } from "../utils";
 import PokeCard from "./PokeCard";
-import "./PokeBattle.css"
+import "./PokeBattle.css";
 
 export function PokeBattle({ onPlayAgain }) {
   const [pokeArray, setPokeArray] = useState([]);
   const [matchup, setMatchup] = useState([]);
   const [winState, setWinState] = useState([null, null]);
+  const [count, setCount] = useState([]);
 
   //what do we need?
   //User clicks a pokemon
@@ -33,6 +34,14 @@ export function PokeBattle({ onPlayAgain }) {
     //simulateBattle
     //Do stuff
     setWinState(winArray);
+
+    setCount(winState);
+    if (count[0]) {
+      count + 1;
+    } else {
+      count + 0;
+    }
+    return;
   }
 
   useEffect(() => {
@@ -53,6 +62,7 @@ export function PokeBattle({ onPlayAgain }) {
   } else {
     return (
       <div className="pokebattle-container">
+        <div className="win-counter">High Score: {count}</div>
         <div className="battle-selection">
           {/* Top Pokemon */}
           <PokeCard
@@ -62,8 +72,8 @@ export function PokeBattle({ onPlayAgain }) {
           />
 
           {/* VS text */}
-          <div className="vs-lable">
-            <h2>VS</h2>
+          <div className="vs-label">
+            <img src="src/images/versus.png" alt="vs"></img>
           </div>
 
           {/* Bottom Pokemon */}

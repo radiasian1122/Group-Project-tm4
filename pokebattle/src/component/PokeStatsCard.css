@@ -1,6 +1,6 @@
-[rank="0"]{
-    color: rgb(12, 205, 44);
-    font-weight: bold;
+[rank="0"] {
+  color: rgb(12, 205, 44);
+  font-weight: bold;
 }
 /* [rank="1"]{
     color: rgb(228, 205, 0);
@@ -14,45 +14,43 @@
 [rank="4"]{
     color: rgb(255, 115, 0);
 } */
-[rank="5"]{
-    color: rgb(255, 17, 0);
-    font-weight: bold;
+[rank="5"] {
+  color: rgb(255, 17, 0);
+  font-weight: bold;
 }
 
-.pokeStatsCard{
-    border: 1px,solid,black;
-    border-radius: 10px;
-    padding: 1em 2em;
-
+.pokeStatsCard {
+  border: 1px, solid, black;
+  border-radius: 10px;
+  padding: 1em 2em;
+  color: black;
 }
 
-.pokeCardHeader{
-    font-size: 30px
+.pokeCardHeader {
+  font-size: 30px;
 }
 
-.vs-lable{
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-
+.vs-lable {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
-.statsRow{
-    display: flex;
-    justify-content: center;
+.statsRow {
+  display: flex;
+  justify-content: center;
 }
 
-.WIN{
-    background-color: #D4EDDA;
+.WIN {
+  background-color: #d4edda;
 }
-.LOSE{
-    background-color: #F8D7DA;
-
+.LOSE {
+  background-color: #f8d7da;
 }
 
 .pokeCardImage {
-    width: 200px;
-    height: auto;
-    image-rendering: pixelated;
+  width: 200px;
+  height: auto;
+  image-rendering: pixelated;
 }
