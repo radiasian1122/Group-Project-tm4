@@ -14,7 +14,7 @@ export function PokeBattle({ onPlayAgain }) {
   const [pokeArray, setPokeArray] = useState([]);
   const [matchup, setMatchup] = useState([]);
   const [winState, setWinState] = useState([null, null]);
-  const [count, setCount] = useState([]);
+  const [count, setCount] = useState(0);
 
   //what do we need?
   //User clicks a pokemon
@@ -23,6 +23,7 @@ export function PokeBattle({ onPlayAgain }) {
   //PokeCard updates with something according to if they won/lost
 
   function pokemonSelected(index) {
+    console.log(index, "player selected index");
     if (winState[0] !== null) {
       return;
     }
@@ -36,14 +37,12 @@ export function PokeBattle({ onPlayAgain }) {
     setWinState(winArray);
 
     setCount(winState);
-    if (count[0]) {
-      count + 1;
+    if (index == winnerIndex) {
+      setCount(count + 1);
     } else {
-      count + 0;
+      setCount(0);
     }
-    return;
   }
-
   useEffect(() => {
     getPokeArray(151).then((data) => setPokeArray(data));
   }, []);
