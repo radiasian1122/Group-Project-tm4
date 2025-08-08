@@ -8,9 +8,15 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(100px) scale(0.97);}
-  to { opacity: 1; transform: translateY(0px) scale(1);}
- }
+  from {
+    opacity: 0;
+    transform: translateY(100px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
 
 .battle-selection {
   display: flex;
@@ -50,6 +56,24 @@ body {
   color: white;
 }
 
+.high-score {
+  width: 100%; /* Image will take 100% of its parent's width */
+  height: auto; /* Height will adjust proportionally */
+  padding-top: 8px;
+  height: 30px; /* Image will have a fixed height of 200px */
+  width: auto; /* Width will adjust proportionally */
+  margin-right: 15px;
+}
+
+.highscore-container {
+  display: flex;
+  align-items: center;
+}
+
+.score-span {
+  font-size: 20px;
+}
+
 .vs-label {
   img {
     width: 100%; /* Image will take 100% of its parent's width */
@@ -65,7 +89,7 @@ body {
   }
 }
 
-.buttonContainer{
+.buttonContainer {
   display: flex;
   flex-direction: row;
   align-content: center;

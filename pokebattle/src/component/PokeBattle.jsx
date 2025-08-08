@@ -10,7 +10,7 @@ import {
   getPokemonName,
   loadObjFromStorage,
   saveObjToStorage,
-  sortHighScores
+  sortHighScores,
 } from "../utils";
 import PokeCard from "./PokeCard";
 import "./PokeBattle.css";
@@ -22,7 +22,7 @@ export function PokeBattle({ onPlayAgain }) {
   const [winState, setWinState] = useState([null, null]);
   const [count, setCount] = useState(0);
   const [highScore, setHighScore] = useState(0);
-  const [leaderboard, setLeaderboard] = useState([])
+  const [leaderboard, setLeaderboard] = useState([]);
 
   //what do we need?
   //User clicks a pokemon
@@ -47,8 +47,8 @@ export function PokeBattle({ onPlayAgain }) {
     if (winnerIndex == -2) {
       winArray.fill("DRAW");
       setWinState(winArray);
-      setCount(count + 1)
-      return
+      setCount(count + 1);
+      return;
     } else {
       winArray.fill("LOSE");
       winArray[winnerIndex] = `WIN`;
@@ -60,14 +60,11 @@ export function PokeBattle({ onPlayAgain }) {
       if (index == winnerIndex) {
         setCount(count + 1);
       } else {
-
-        setHighScore(count) //stash count to high score
-
+        setHighScore(count); //stash count to high score
 
         setCount(-1); //trigger lose screen
       }
     }
-
   }
 
   useEffect(() => {
@@ -86,11 +83,27 @@ export function PokeBattle({ onPlayAgain }) {
   if (pokeArray.length === 0) {
     return <div>Loading...</div>;
   } else if (count == -1) {
-    let loserPokemon = getRandomPokemon(pokeArray)
+    let loserPokemon = getRandomPokemon(pokeArray);
     return (
       <div className="pokebattle-container">
-        <div>YOU LOSE...</div>
-        <div>Your high score was: {highScore}</div>
+        <div>
+          <img
+            className="gameover"
+            src="src/images/game-over.png"
+            alt="loser"
+          ></img>
+        </div>
+        <div>
+          {" "}
+          <div className="highscore-container">
+            <img
+              src="src/images/highscore.png"
+              className="high-score"
+              alt="highscore"
+            ></img>
+            <span className="score-span">{highScore}</span>
+          </div>
+        </div>
         <img
           className="pokeCardImage"
           alt={getPokemonName(loserPokemon)}
@@ -102,14 +115,15 @@ export function PokeBattle({ onPlayAgain }) {
             onClick={() => {
               setMatchup(getMatchup(pokeArray));
               setWinState([null, null]);
-              setCount(0)
+              setCount(0);
             }}
-          >Play Again</button>
-
+          >
+            Play Again
+          </button>
         </div>
-        <Leaderboard highScore={highScore}/>
+        <Leaderboard highScore={highScore} />
       </div>
-    )
+    );
   } else {
     return (
       <div className="pokebattle-container">
@@ -134,8 +148,6 @@ export function PokeBattle({ onPlayAgain }) {
             clickedPokemon={() => pokemonSelected(1)}
           />
         </div>
-
-
 
         <button
           className="play-again-button"
