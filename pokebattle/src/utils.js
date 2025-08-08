@@ -158,3 +158,19 @@ export function rankStats(statsArray) {
   return nameOrder;
 }
 
+export function sortHighScores(statsArray) {
+  let indexedArray = statsArray.map((item, index) => ({
+    value: item["value"],
+    name: item["name"],
+  }));
+
+  indexedArray.sort((a, b) => b.value - a.value);
+  const nameOrder = indexedArray.map((item) => item.name);
+
+  //return {speed:value:ranking}
+
+  //return array of rankings
+  //[6,4,3,2,5,1]
+  return indexedArray;
+}
+

@@ -1,61 +1,78 @@
-[rank="0"] {
+[rank="0"]{
   color: rgb(12, 205, 44);
   font-weight: bold;
 }
 /* [rank="1"]{
-    color: rgb(228, 205, 0);
+  color: rgb(228, 205, 0);
 } */
 /* [rank="2"]{
-    color: rgb(20, 134, 201);
+  color: rgb(20, 134, 201);
 }
 [rank="3"]{
-    color: rgb(238, 255, 0);
+  color: rgb(238, 255, 0);
 }
 [rank="4"]{
-    color: rgb(255, 115, 0);
+  color: rgb(255, 115, 0);
 } */
-[rank="5"] {
+[rank="5"]{
   color: rgb(255, 17, 0);
   font-weight: bold;
 }
-
-.pokeStatsCard {
-  border: 1px, solid, black;
-  border-radius: 10px;
-  padding: 1em 2em;
-  color: black;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(100px) scale(0.97);}
+  to { opacity: 1; transform: translateY(0px) scale(1);}
+ }
+ .pokeStatsCard {
+  border: 2px solid #222;
+  border-radius: 16px;
+  padding: 1.3em 2.2em;
+  color: #222;
   min-width: 230px;
-}
-.pokeStatsCard:hover {
-  transform: translateY(-5px) scale(1.04);
-  box-shadow: 0 8px 40px 0 rgba(52, 152, 219, 0.15);
-}
+  background: #fff;
+  margin: 12px auto;
+  box-shadow: 0 2px 16px 0 rgba(30,30,40,0.08);
+  transition: box-shadow 0.2s, transform 0.2s, border 0.2s;
+  animation: fadeIn 0.5s cubic-bezier(0.4, 1.56, 0.64, 1) both;
+ }
 
-.pokeCardHeader {
+ .pokeStatsCard:hover {
+  box-shadow: 0 8px 40px 0 rgba(144, 238, 250, 0.692);
+ }
+ 
+ .pokeCardHeader {
   font-size: 30px;
-}
-
-.vs-lable {
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
   margin-bottom: 10px;
 }
-
+.vs-label {
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  margin: 15px 0 18px 0;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 .statsRow {
   display: flex;
   justify-content: center;
+  font-size: 1.08em;
+  margin-bottom: 5px;
 }
-
-.WIN {
-  background-color: #d4edda;
+.pokeStatsCard.WIN {
+  background-color: #D4EDDA;
+  border-color: #52B96B;
 }
-.LOSE {
-  background-color: #f8d7da;
+.pokeStatsCard.LOSE {
+  background-color: #F8D7DA;
+  border-color: #EA7676;
 }
-
 .pokeCardImage {
   width: 200px;
   height: auto;
   image-rendering: pixelated;
+}
+.pokeStatsResult {
+  text-align: center;
+  margin-bottom: 14px;
+  font-size: 1.6em;
+  font-weight: 700;
 }
