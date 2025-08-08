@@ -1,11 +1,38 @@
 import { useEffect } from "react";
 
+//GENERAL USE UTILS
 export async function apiCaller(url) {
   //Takes a url, and returns a promise>response JSON body
   const res = await fetch(url);
   const data = await res.json();
   return await data;
 }
+
+export function saveObjToStorage(savedObj, key) {
+    localStorage.setItem(key, JSON.stringify(savedObj))
+}
+
+export function loadObjFromStorage(key) {
+    if (localStorage.getItem(key) == null) {
+        return false
+    } else
+        return JSON.parse(localStorage.getItem(key))
+}
+
+export function stateMonitor(stateValue, stateName = "State") {
+  return useEffect(() => {
+    console.log(`${stateName} changed, new value is`, stateValue);
+  }, [stateValue]);
+}
+
+export function toTitleCase(str) {
+  return str.replace(
+    /\w\S*/g,
+    (text) => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+  );
+}
+
+//POKEMON-SPECIFIC UTILS
 
 export async function getPokeArray(maxId, minId = 0) {
   //Takes a maximum and optional minimum Id to pull from, and returns promise>Array of pokemon objects
@@ -80,12 +107,7 @@ export function getMatchup(pokemonArray, size = 2) {
   return matchupArray;
 }
 
-export function toTitleCase(str) {
-  return str.replace(
-    /\w\S*/g,
-    (text) => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
-  );
-}
+
 
 export function getPokemonStats(pokemon) {
   return pokemon["stats"];
@@ -101,11 +123,7 @@ export function sumPokeStats(pokemon) {
   return fighterScore;
 }
 
-export function stateMonitor(stateValue, stateName = "State") {
-  return useEffect(() => {
-    console.log(`${stateName} changed, new value is`, stateValue);
-  }, [stateValue]);
-}
+
 
 export function getPokemonStatValue(pokemon, stat) {
   return getPokemonStats(pokemon).find((item) => item["stat"]["name"] === stat)[
@@ -139,3 +157,4 @@ export function rankStats(statsArray) {
   //[6,4,3,2,5,1]
   return nameOrder;
 }
+
