@@ -34,6 +34,22 @@ export function simulateBattle(matchupArray) {
     scoreArray[fighterIndex] = fighterScore;
   }
 
+
+  let maxScore = Math.max(...scoreArray)
+
+  //check for ties
+  let count = 0;
+  for (let i = 0; i < scoreArray.length; i++) {
+    if (scoreArray[i] === maxScore) {
+      count++;
+    }
+  }
+//if tie, return -2 as a non-error resolution
+  if (count > 1) {
+    return -2
+  }
+
+
   let winningIndex = scoreArray.indexOf(Math.max(...scoreArray));
   //returns index of winning pokemon
   return winningIndex;

@@ -29,20 +29,32 @@ export function PokeBattle({ onPlayAgain }) {
     }
     let winArray = winState.slice();
 
-    winArray.fill("LOSE");
-    let winnerIndex = simulateBattle(matchup);
-    winArray[winnerIndex] = `WIN`;
-    //simulateBattle
-    //Do stuff
-    setWinState(winArray);
 
-    setCount(winState);
-    if (index == winnerIndex) {
-      setCount(count + 1);
+    let winnerIndex = simulateBattle(matchup);
+    if (winnerIndex == -2) {
+      winArray.fill("DRAW");
+      setWinState(winArray);
+      setCount(count + 1)
+      return
     } else {
-      setCount(0);
+      winArray.fill("LOSE");
+      winArray[winnerIndex] = `WIN`;
+      //simulateBattle
+      //Do stuff
+      setWinState(winArray);
+
+      setCount(winState);
+      if (index == winnerIndex) {
+        setCount(count + 1);
+      } else {
+        setCount(0);
+      }
     }
+
+
+
   }
+
   useEffect(() => {
     getPokeArray(151).then((data) => setPokeArray(data));
   }, []);
@@ -90,7 +102,7 @@ export function PokeBattle({ onPlayAgain }) {
             setWinState([null, null]);
           }}
         >
-          Play Again
+          New Matchup
         </button>
       </div>
     );

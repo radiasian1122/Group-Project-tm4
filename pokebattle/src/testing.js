@@ -2,7 +2,8 @@ import {getMatchup, getPokeArray, getPokemonImage, getPokemonName, getPokemonSta
 
 let myPokeArray = await getPokeArray(151)
 //let randomPokemon = getRandomPokemon(await myPokeArray)
-let myMatchup = [await getRandomPokemon(myPokeArray),await getRandomPokemon(myPokeArray),await getRandomPokemon(myPokeArray)]
+let myTestPokemon = getRandomPokemon(await myPokeArray)
+let myMatchup = [await myTestPokemon, await myTestPokemon]
 let myWinnerIndex = simulateBattle(await myMatchup)
 console.log(await myMatchup)
 console.log(await myWinnerIndex)
